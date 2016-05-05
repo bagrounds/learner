@@ -1,0 +1,26 @@
+{
+  "name": "learner",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node bin/learner",
+    "test": "_mocha",
+    "predocument": "rm -r docs",
+    "document": "jsdoc --destination docs -c conf/jsdoc-conf.json -r",
+    "precoverage": "rm -r coverage",
+    "coverage": "istanbul cover _mocha",
+    "build": "npm run coverage && npm run document"
+  },
+  "dependencies": {
+    "argparse": "^1.0.7",
+    "configstore": "^2.0.0",
+    "mathjs": "^3.2.1",
+    "type-check": "^0.3.2"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "istanbul": "^0.4.3",
+    "jsdoc": "^3.4.0",
+    "mocha": "^2.4.5"
+  }
+}

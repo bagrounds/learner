@@ -1,0 +1,44 @@
+#!/usr/bin/env node
+/**
+ * Executable file that calls aFunction with command line parameters
+ */
+;(function(){
+
+    var ArgumentParser = require('argparse').ArgumentParser;
+
+    var aFunction = require('../serve-function-module-template');
+
+    var pkg = require('../package');
+
+    var parser = new ArgumentParser({
+        version: pkg.version,
+        addHelp: true,
+        description: pkg.name
+    });
+
+    parser.addArgument(
+        ['-x','--x'],
+        {
+            help: 'the x input parameter to aFunction'
+        }
+    );
+    parser.addArgument(
+        ['-y','--y'],
+        {
+            help: 'the y input parameter to aFunction'
+        }
+    );
+    parser.addArgument(
+        ['-z','--z'],
+        {
+            help: 'the z input parameter to aFunction'
+        }
+    );
+
+    var aFunctionOptions = parser.parseArgs();
+
+    aFunction(aFunctionOptions,function(error, result){
+        error && console.error(error);
+        !error && console.log(result);
+    });
+})();
