@@ -1,5 +1,6 @@
 
 ![GitHub Downloads][downloads-url]
+![Travis Build Status][travis-url]
 
 # learner
 Learns stuff
@@ -19,3 +20,4 @@ Learns stuff
   $ npm test
 ```
 [downloads-url]: https://img.shields.io/github/downloads/bagrounds/learner/total.svg
+[travis-url]: https://img.shields.io/travis/bagrounds/learner/master.svg
