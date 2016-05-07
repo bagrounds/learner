@@ -3,7 +3,7 @@
  */
 ;(function () {
   /* global describe, it, before */
-  "use strict";
+  'use strict';
 
   /***************************************************************************
    * Imports

@@ -7,13 +7,14 @@
     "start": "node bin/learner",
     "test": "_mocha",
     "predocument": "rm -rf docs",
-    "document": "jsdoc --destination docs -c conf/jsdoc-conf.json -r",
+    "document": "jsdoc --destination docs -c .jsdoc.json -r",
     "precoverage": "rm -rf coverage",
     "coverage": "istanbul cover _mocha -- -R spec",
     "postcoverage": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
     "build": "npm run coverage && npm run document",
     "prepush": "npm run coverage",
-    "push": "git push origin master"
+    "push": "git push origin master",
+    "lint":"eslint *.js lib/**/*.js test/**/*.js"
   },
   "dependencies": {
     "argparse": "^1.0.7",

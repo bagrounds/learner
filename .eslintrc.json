@@ -22,6 +22,8 @@
     "semi": [
       "error",
       "always"
-    ]
+    ],
+    "no-extra-semi": 0,
+    "valid-jsdoc": 2
   }
 }

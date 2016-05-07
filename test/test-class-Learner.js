@@ -3,7 +3,7 @@
  */
 ;(function () {
   /* global describe, it, beforeEach */
-  "use strict";
+  'use strict';
 
   /***************************************************************************
    * Imports
@@ -25,8 +25,6 @@
     var newLearner;
     var observationA;
     var observationB;
-    var observationC;
-    var observationD;
     var unlabeledObservation;
 
     beforeEach(function () {
@@ -44,22 +42,6 @@
         classLabel: 'classB',
         measurement: {
           a: 0,
-          b: 10
-        }
-      };
-
-      observationC = {
-        classLabel: 'classC',
-        measurement: {
-          a: 10,
-          b: 0
-        }
-      };
-
-      observationD = {
-        classLabel: 'classD',
-        measurement: {
-          a: 10,
           b: 10
         }
       };
@@ -97,6 +79,10 @@
 
           newLearner = new Learner();
 
+          expect(error).to.not.be.ok;
+          expect(prediction).to.be.ok;
+
+
           expect(newLearner.observations).to.deep.equal([]);
 
           done();
@@ -122,6 +108,7 @@
         newLearner.observe(learnerOptions, function (error, prediction) {
 
           expect(error).to.not.be.ok;
+          expect(prediction).to.be.ok;
 
           // get last observation
           var actualObservation = newLearner.observations.slice(-1)[0];
@@ -143,6 +130,7 @@
         newLearner.observe(learnerOptions, function (error, prediction) {
 
           expect(error).to.not.be.ok;
+          expect(prediction).to.be.ok;
 
           // get last observation
           var actualObservation = newLearner.observations.slice(-1)[0];
@@ -257,6 +245,7 @@
         newLearner.predict(learnerOptions,function(error,prediction){
 
           expect(error).to.not.be.ok;
+          expect(prediction).to.be.ok;
 
           expect(newLearner.observations).to.deep.equal([]);
 
