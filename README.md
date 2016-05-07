@@ -1,3 +1,6 @@
+
+![GitHub Downloads][downloads-url]
+
 # learner
 Learns stuff
 
@@ -15,3 +18,4 @@ Learns stuff
 ``` bash
   $ npm test
 ```
+[downloads-url]: https://img.shields.io/github/downloads/bagrounds/learner/total.svg
