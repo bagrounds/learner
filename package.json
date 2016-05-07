@@ -1,6 +1,6 @@
 {
   "name": "learner",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "main": "learner.js",
   "private": true,
   "scripts": {
@@ -11,7 +11,9 @@
     "precoverage": "rm -rf coverage",
     "coverage": "istanbul cover _mocha -- -R spec",
     "postcoverage": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
-    "build": "npm run coverage && npm run document"
+    "build": "npm run coverage && npm run document",
+    "prepush": "npm run coverage",
+    "push": "git push origin master"
   },
   "dependencies": {
     "argparse": "^1.0.7",

@@ -1,7 +1,9 @@
 
 ![GitHub Downloads][downloads-url]
 ![Travis Build Status][travis-url]
-[![Coverage Status](https://coveralls.io/repos/github/bagrounds/learner/badge.svg?branch=master)](https://coveralls.io/github/bagrounds/learner?branch=master)
+[![Coverage Status][coveralls-img]][coveralls-url]
+
+
 # learner
 Learns stuff
 
@@ -21,3 +23,6 @@ Learns stuff
 ```
 [downloads-url]: https://img.shields.io/github/downloads/bagrounds/learner/total.svg
 [travis-url]: https://img.shields.io/travis/bagrounds/learner/master.svg
+
+[coveralls-img]: https://coveralls.io/repos/github/bagrounds/learner/badge.svg?branch=master
+[coveralls-url]: https://coveralls.io/github/bagrounds/learner?branch=master
