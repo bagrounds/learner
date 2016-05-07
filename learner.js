@@ -3,8 +3,8 @@
  *
  * @module learner
  */
-(function(){
-  "use strict";
+(function () {
+  'use strict';
 
   /*****************************************************************************
    * imports
@@ -12,8 +12,7 @@
   var typeCheck = require('type-check').typeCheck;
   var Learner = require('./lib/Learner');
   var storage = require('./lib/storage');
-
-  var V = require('./conf/values');
+  var _ = require('lodash');
 
   /*****************************************************************************
    * exports
@@ -21,37 +20,28 @@
   module.exports = learner;
 
   /**
-   * @typedef {Object} options
-   * @property {String} learnerId
-   * @property {String} action register, observe, or predict
-   * @property {observation} observation
-   */
-
-  /**
    *
    * @function learner
    *
    * @param {options} options
-   * @param {String} [options.type]
    * @param {callback} callback
    */
-  function learner(options, callback){
+  function learner(options, callback) {
 
-    var error = validateOptions(options);
-
-    if( error ){
-      callback(error, options);
+    if (!options.action) {
+      listRegisteredIds({}, callback);
       return;
     }
 
-    if( !options.action ){
-      listRegisteredIds({},callback);
+    var error = invalidOptions(options);
+    if (error) {
+      callback(error, options);
       return;
     }
 
     var action = options.action;
 
-    switch(action){
+    switch (action) {
 
       case 'register':
         register(options, callback);
@@ -75,6 +65,13 @@
    */
 
   /**
+   * @typedef {Object} options
+   * @property {String} learnerId
+   * @property {String} action register, observe, or predict
+   * @property {observation} observation
+   */
+
+  /**
    * Validate inputs.
    *
    * @private
@@ -83,7 +80,28 @@
    *
    * @returns {Error|null} any errors due to invalid inputs
    */
-  function validateOptions(options){
+  function invalidOptions(options) {
+
+    var SUPPORTED_ACTIONS = [
+      'register',
+      'observe',
+      'predict'
+    ];
+
+    // description of observation object
+    var dObservation = '{measurement: Object, classLabel: Maybe String}';
+
+    var dOptions = '{action: String, learnerId: String, observation: ' + dObservation + '}';
+
+    if( !_.includes( SUPPORTED_ACTIONS, options.action) ){
+      var message = options.action + ' is an unsupported action. ';
+
+      message += 'Supported actions: ' + JSON.toString(SUPPORTED_ACTIONS);
+
+      return new Error(message);
+    }
+
+    typeCheck(dOptions, options);
 
     return null;
   }
@@ -94,7 +112,7 @@
    * @param options
    * @param {callback} callback
    */
-  function register(options, callback){
+  function register(options, callback) {
 
     var learnerId = generateId();
 
@@ -111,7 +129,7 @@
    * @param options
    * @param {callback} callback
    */
-  function listRegisteredIds(options, callback){
+  function listRegisteredIds(options, callback) {
 
     callback(null, storage.all());
   }
@@ -121,30 +139,27 @@
    *
    * @returns {String} a new unique id
    */
-  function generateId(){
+  function generateId() {
 
     var ids = storage.load('ids');
 
-    if( !ids ){
-      console.log('no ids!');
+    if (!ids) {
 
       ids = [];
     }
 
-    console.log(JSON.stringify(ids));
-
     ids.push(newId(ids));
 
-    ids = storage.save('ids',ids);
+    ids = storage.save('ids', ids);
 
     return String(newId);
   }
 
-  function newId(ids){
+  function newId(ids) {
 
     var id;
 
-    if( ids.length == 0 ){
+    if (ids.length == 0) {
 
       id = 0;
     } else {
@@ -160,18 +175,18 @@
    * @param {options} options
    * @param {callback} callback
    */
-  function observe(options, callback){
+  function observe(options, callback) {
 
     var learnerId = options.learnerId;
     var observation = options.observation;
 
     var aLearner = storage.load(learnerId);
 
-    aLearner.observe(observation, function(error, scores){
+    aLearner.observe(observation, function (error, scores) {
 
-      storage.save(learnerId,aLearner);
+      storage.save(learnerId, aLearner);
 
-      callback(error,scores);
+      callback(error, scores);
     });
   }
 
@@ -182,7 +197,7 @@
    *
    * @param {callback} callback
    */
-  function predict(options,callback){
+  function predict(options, callback) {
 
     var learnerId = options.learnerId;
     var observation = options.observation;
@@ -193,7 +208,7 @@
       observation: observation
     };
 
-    aLearner.predict(learnerOptions,callback);
+    aLearner.predict(learnerOptions, callback);
   }
 
 
