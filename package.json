@@ -1,6 +1,6 @@
 {
   "name": "learner",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "main": "learner.js",
   "private": true,
   "scripts": {
@@ -9,21 +9,26 @@
     "predocument": "rm -r docs",
     "document": "jsdoc --destination docs -c conf/jsdoc-conf.json -r",
     "precoverage": "rm -r coverage",
-    "coverage": "istanbul cover _mocha",
+    "coverage": "istanbul cover _mocha -- -R spec",
+    "postcoverage": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
     "build": "npm run coverage && npm run document"
   },
   "dependencies": {
     "argparse": "^1.0.7",
     "configstore": "^2.0.0",
     "convnetjs": "^0.3.0",
+    "coveralls": "^2.11.9",
     "lodash": "^4.11.2",
     "mathjs": "^3.2.1",
+    "mocha": "^2.4.5",
     "type-check": "^0.3.2"
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "coveralls": "^2.11.9",
     "istanbul": "^0.4.3",
     "jsdoc": "^3.4.0",
-    "mocha": "^2.4.5"
+    "mocha": "^2.4.5",
+    "mocha-lcov-reporter": "^1.2.0"
   }
 }
