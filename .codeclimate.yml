@@ -8,9 +8,10 @@ engines:
       - javascript
 ratings:
   paths:
-  - app/**
-  - lib/**
+  - "lib/**"
+  - "test/**"
   - "**.js"
 exclude_paths:
 - "coverage"
 - "docs"
+- "node_modules"
