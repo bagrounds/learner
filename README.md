@@ -1,7 +1,8 @@
 
 [![GitHub Downloads][github-img]][github-url]
-[![Travis Build Status][travis-img]][travis-url]
-[![Coverage Status][coveralls-img]][coveralls-url]
+[![Travis-CI][travis-img]][travis-url]
+[![Coveralls][coveralls-img]][coveralls-url]
+[![Code Climate][codeclimate-img]][codeclimate-url]
 
 
 # learner
@@ -30,3 +31,6 @@ Learns stuff
 
 [coveralls-img]: https://coveralls.io/repos/github/bagrounds/learner/badge.svg?branch=master
 [coveralls-url]: https://coveralls.io/github/bagrounds/learner?branch=master
+
+[codeclimate-img]: https://codeclimate.com/github/bagrounds/learner/badges/gpa.svg
+[codeclimate-url]: https://codeclimate.com/github/bagrounds/learner
