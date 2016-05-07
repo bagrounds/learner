@@ -1,6 +1,6 @@
 
-![GitHub Downloads][downloads-url]
-![Travis Build Status][travis-url]
+[![GitHub Downloads][github-img]][github-url]
+[![Travis Build Status][travis-img]][travis-url]
 [![Coverage Status][coveralls-img]][coveralls-url]
 
 
@@ -21,8 +21,12 @@ Learns stuff
 ``` bash
   $ npm test
 ```
-[downloads-url]: https://img.shields.io/github/downloads/bagrounds/learner/total.svg
-[travis-url]: https://img.shields.io/travis/bagrounds/learner/master.svg
+
+[github-img]: https://img.shields.io/github/downloads/bagrounds/learner/total.svg
+[github-url]: https://github.com/bagrounds/learner
+
+[travis-img]: https://img.shields.io/travis/bagrounds/learner/master.svg
+[travis-url]: https://travis-ci.org/bagrounds/learner
 
 [coveralls-img]: https://coveralls.io/repos/github/bagrounds/learner/badge.svg?branch=master
 [coveralls-url]: https://coveralls.io/github/bagrounds/learner?branch=master
