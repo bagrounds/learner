@@ -1,5 +1,12 @@
 /**
- * Learns stuff
+ * Learns stuff.
+ *
+ * @summary   Exposes learner interface
+ *
+ * @requires {@link http://www.npmjs.org/packages/type-check|type-check}
+ * @requires {@link http://www.npmjs.org/packages/lodash|lodash}
+ * @requires {@link Learner}
+ * @requires module:storage
  *
  * @module learner
  */
@@ -9,6 +16,7 @@
   /*****************************************************************************
    * imports
    */
+
   var typeCheck = require('type-check').typeCheck;
   var Learner = require('./lib/Learner');
   var storage = require('./lib/storage');
@@ -20,16 +28,17 @@
   module.exports = learner;
 
   /**
+   * Register a new Learner, record an observation, or make a prediction.
    *
    * @function learner
    *
-   * @param {options} options
-   * @param {callback} callback
+   * @param {options} options contains function parameters
+   * @param {callback} callback handles results
    */
   function learner(options, callback) {
 
     if (!options.action) {
-      listRegisteredIds({}, callback);
+      listRegisteredIds(callback);
       return;
     }
 
@@ -72,11 +81,17 @@
    */
 
   /**
+   * @typedef {Function} callback handles results of an async function call
+   * @type {Function}
+   * @property {Error} error describes any errors that may have occurred
+   * @property {*} result
+   */
+
+
+  /**
    * Validate inputs.
    *
-   * @private
-   *
-   * @param {options} options
+   * @param {options} options passed to learner
    *
    * @returns {Error|null} any errors due to invalid inputs
    */
@@ -109,8 +124,8 @@
   /**
    * Create and register a new Learner.
    *
-   * @param options
-   * @param {callback} callback
+   * @param {options} options passed to learner
+   * @param {callback} callback handle results
    */
   function register(options, callback) {
 
@@ -126,10 +141,9 @@
   /**
    * Create and register a new Learner.
    *
-   * @param options
-   * @param {callback} callback
+   * @param {callback} callback handle results
    */
-  function listRegisteredIds(options, callback) {
+  function listRegisteredIds(callback) {
 
     callback(null, storage.all());
   }
@@ -171,9 +185,10 @@
   }
 
   /**
+   * Record an observation
    *
-   * @param {options} options
-   * @param {callback} callback
+   * @param {options} options passed to learner
+   * @param {callback} callback handle results
    */
   function observe(options, callback) {
 
@@ -193,9 +208,9 @@
   /**
    * Make a prediction based on the observation and the existing model.
    *
-   * @param {options} options
+   * @param {options} options passed to learner
    *
-   * @param {callback} callback
+   * @param {callback} callback handle results
    */
   function predict(options, callback) {
 

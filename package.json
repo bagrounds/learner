@@ -14,7 +14,7 @@
     "build": "npm run coverage && npm run document",
     "prepush": "npm run coverage",
     "push": "git push origin master",
-    "lint":"eslint *.js lib/**/*.js test/**/*.js"
+    "lint": "eslint *.js lib/**/*.js test/**/*.js"
   },
   "dependencies": {
     "argparse": "^1.0.7",
