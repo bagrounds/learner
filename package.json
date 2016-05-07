@@ -19,15 +19,14 @@
     "argparse": "^1.0.7",
     "configstore": "^2.0.0",
     "convnetjs": "^0.3.0",
-    "coveralls": "^2.11.9",
     "lodash": "^4.11.2",
     "mathjs": "^3.2.1",
-    "mocha": "^2.4.5",
     "type-check": "^0.3.2"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "coveralls": "^2.11.9",
+    "eslint": "^2.9.0",
     "istanbul": "^0.4.3",
     "jsdoc": "^3.4.0",
     "mocha": "^2.4.5",
