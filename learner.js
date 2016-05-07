@@ -32,6 +32,7 @@
    * @function learner
    *
    * @param {options} options
+   * @param {String} [options.type]
    * @param {callback} callback
    */
   function learner(options, callback){
@@ -40,6 +41,12 @@
 
     if( error ){
       callback(error, options);
+      return;
+    }
+
+    if( !options.action ){
+      listRegisteredIds({},callback);
+      return;
     }
 
     var action = options.action;
@@ -96,6 +103,17 @@
     storage.save(learnerId, newLearner);
 
     callback(null, learnerId);
+  }
+
+  /**
+   * Create and register a new Learner.
+   *
+   * @param options
+   * @param {callback} callback
+   */
+  function listRegisteredIds(options, callback){
+
+    callback(null, storage.all());
   }
 
   /**

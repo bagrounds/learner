@@ -23,6 +23,23 @@
             expect(isFunction).to.be.true;
         });
 
+        describe('no options', function(){
+
+            it('should return a list of keys', function(done){
+
+                var learnerOptions = {};
+
+                learner(learnerOptions,function(error,keys){
+
+                    var isString = typeCheck('Object',keys);
+
+                    expect(isString).to.be.true;
+                    done();
+                });
+
+            });
+        });
+
         describe('options.action = "register"', function(){
 
             it('should return a key', function(done){
@@ -32,6 +49,8 @@
                 };
 
                 learner(learnerOptions,function(error,id){
+
+                    console.log('id: ' + JSON.stringify(id));
 
                     var isString = typeCheck('String',id);
 
