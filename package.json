@@ -6,9 +6,9 @@
   "scripts": {
     "start": "node bin/learner",
     "test": "_mocha",
-    "predocument": "rm -r docs",
+    "predocument": "rm -rf docs",
     "document": "jsdoc --destination docs -c conf/jsdoc-conf.json -r",
-    "precoverage": "rm -r coverage",
+    "precoverage": "rm -rf coverage",
     "coverage": "istanbul cover _mocha -- -R spec",
     "postcoverage": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
     "build": "npm run coverage && npm run document"
