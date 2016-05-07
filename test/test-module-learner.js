@@ -1,5 +1,5 @@
 /**
- * Tests for serve-function-module-template
+ * Tests for learner
  */
 ;(function () {
     /* global describe, it, before */
@@ -9,64 +9,50 @@
      * Imports
      */
     var expect = require('chai').expect;
-
-    var aFunction = require('../serve-function-module-template');
+    var learner = require('../learner');
+    var typeCheck = require('type-check').typeCheck;
 
     /***************************************************************************
      * Tests
      */
-    describe('serve-function-module-template', function () {
+    describe('learner', function () {
 
-        var validOptions;
-        var invalidOptions;
+        it('should be a function', function(){
+            var isFunction = typeCheck('Function',learner);
 
-        before(function () {
-
-            validOptions = {
-                x: 'valid',
-                y: 'also valid',
-                z: 'this is a invalid input'
-            };
-
-            invalidOptions = {
-                x: 'valid',
-                y: 'also valid',
-                z: ['this', 'is', 'an', 'invalid', 'input']
-            };
+            expect(isFunction).to.be.true;
         });
 
-        it('should return an error for invalid inputs', function (done) {
+        describe('options.action = "register"', function(){
 
-            aFunction(invalidOptions, function (error, result) {
+            it('should return a key', function(done){
 
-                expect(error).to.be.an('error');
+                var learnerOptions = {
+                    action: 'register'
+                };
 
-                done();
+                learner(learnerOptions,function(error,id){
+
+                    var isString = typeCheck('String',id);
+
+                    expect(isString).to.be.true;
+                    done();
+                });
+
             });
-
         });
 
-        it('should not return an error for valid inputs', function (done) {
+        describe('options.action = "observe"', function(){
 
-            aFunction(validOptions, function (error, result) {
+            it('should be a valid action', function(){
 
-                expect(error).to.be.null;
-
-                done();
             });
-
         });
 
-        it('should return the sum of its inputs', function (done) {
+        describe('options.action = "predict"', function(){
 
-            var expectedResult = validOptions.x + validOptions.y +
-                validOptions.z;
+            it('should be a valid action', function(){
 
-            aFunction(validOptions, function (error, result) {
-
-                expect(result).to.equal(expectedResult);
-
-                done();
             });
         });
     });

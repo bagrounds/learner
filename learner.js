@@ -22,19 +22,17 @@
 
   /**
    * @typedef {Object} options
-   * @property {Number} learnerId
+   * @property {String} learnerId
    * @property {String} action register, observe, or predict
-   * @property {ObservationType} observation
+   * @property {observation} observation
    */
 
   /**
    *
    * @function learner
-   * @param {Object} options
-   * @param {String} options.action register, observe, or predict
-   * @param {Number} options.learnerId
-   * @param {ObservationType} options.observation
-   * @param {callback} callback handles results
+   *
+   * @param {options} options
+   * @param {callback} callback
    */
   function learner(options, callback){
 
@@ -103,46 +101,45 @@
   /**
    * Generates a new unique id.
    *
-   * @returns {Number} a new unique id
+   * @returns {String} a new unique id
    */
   function generateId(){
 
     var ids = storage.load('ids');
 
     if( !ids ){
+      console.log('no ids!');
 
-      ids = {};
-
-      ids.activeIds = [];
-
-      ids.nextId = function(){
-
-        var id;
-
-        if( ids.activeIds.length == 0 ){
-
-          id = 0;
-        } else {
-
-          id = Math.max.apply(null, ids.activeIds) + 1;
-        }
-
-        ids.activeIds.push(id);
-
-        return id;
-      };
-
-      ids = storage.save('ids',ids);
+      ids = [];
     }
 
-    return ids.nextId();
+    console.log(JSON.stringify(ids));
+
+    ids.push(newId(ids));
+
+    ids = storage.save('ids',ids);
+
+    return String(newId);
+  }
+
+  function newId(ids){
+
+    var id;
+
+    if( ids.length == 0 ){
+
+      id = 0;
+    } else {
+
+      id = Math.max.apply(null, ids) + 1;
+    }
+
+    return id;
   }
 
   /**
    *
-   * @param {Object} options
-   * @param {Number} options.learnerId
-   * @param {Object} options.observation
+   * @param {options} options
    * @param {callback} callback
    */
   function observe(options, callback){
@@ -152,19 +149,18 @@
 
     var aLearner = storage.load(learnerId);
 
-    aLearner.observe(observation);
+    aLearner.observe(observation, function(error, scores){
 
-    storage.save(aLearner);
+      storage.save(learnerId,aLearner);
 
-    return aLearner.predict(observation, callback);
+      callback(error,scores);
+    });
   }
 
   /**
    * Make a prediction based on the observation and the existing model.
    *
-   * @param {Object} options
-   * @param {Number} options.learnerId
-   * @param {Object|Array<Object>} options.observation
+   * @param {options} options
    *
    * @param {callback} callback
    */
@@ -180,7 +176,6 @@
     };
 
     aLearner.predict(learnerOptions,callback);
-
   }
 
 

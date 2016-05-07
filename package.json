@@ -1,6 +1,7 @@
 {
   "name": "learner",
-  "version": "0.1.0",
+  "version": "0.2.0",
+  "main": "learner.js",
   "private": true,
   "scripts": {
     "start": "node bin/learner",
@@ -14,6 +15,8 @@
   "dependencies": {
     "argparse": "^1.0.7",
     "configstore": "^2.0.0",
+    "convnetjs": "^0.3.0",
+    "lodash": "^4.11.2",
     "mathjs": "^3.2.1",
     "type-check": "^0.3.2"
   },

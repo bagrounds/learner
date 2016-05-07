@@ -8,7 +8,8 @@
   /***************************************************************************
    * Imports
    */
-  var expect = require('chai').expect;
+  var chai = require('chai');
+  var expect = chai.expect;
 
   var storage = require('../lib/storage');
 
