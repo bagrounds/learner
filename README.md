@@ -3,6 +3,7 @@
 [![Travis-CI][travis-img]][travis-url]
 [![Coveralls][coveralls-img]][coveralls-url]
 [![Code Climate][codeclimate-img]][codeclimate-url]
+[![Code Climate][codeclimate-issues-img]][codeclimate-issues-url]
 
 
 # learner
@@ -34,3 +35,7 @@ Learns stuff
 
 [codeclimate-img]: https://codeclimate.com/github/bagrounds/learner/badges/gpa.svg
 [codeclimate-url]: https://codeclimate.com/github/bagrounds/learner
+
+[codeclimate-issues-img]: https://codeclimate.com/github/bagrounds/learner/badges/issue_count.svg
+[codeclimate-issues-url]: https://codeclimate.com/github/bagrounds/learner
+
