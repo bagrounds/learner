@@ -75,9 +75,9 @@
 
   /**
    * @typedef {Object} options
-   * @property {String} learnerId
-   * @property {String} action register, observe, or predict
-   * @property {observation} observation
+   * @property {String} [learnerId] the id of the Learner to use
+   * @property {String} [action] register, observe, or predict
+   * @property {observation} [observation] a new observation
    */
 
   /**
