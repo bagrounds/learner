@@ -12,15 +12,15 @@
       }
     ],
     "linebreak-style": [
-      "error",
+      2,
       "unix"
     ],
     "quotes": [
-      "error",
+      2,
       "single"
     ],
     "semi": [
-      "error",
+      2,
       "always"
     ],
     "no-extra-semi": 0,
