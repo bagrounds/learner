@@ -37,5 +37,5 @@ Learns stuff
 [codeclimate-url]: https://codeclimate.com/github/bagrounds/learner
 
 [codeclimate-issues-img]: https://codeclimate.com/github/bagrounds/learner/badges/issue_count.svg
-[codeclimate-issues-url]: https://codeclimate.com/github/bagrounds/learner
+[codeclimate-issues-url]: https://codeclimate.com/github/bagrounds/learner/issues
 
