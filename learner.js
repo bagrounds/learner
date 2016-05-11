@@ -162,11 +162,12 @@
       ids = [];
     }
 
-    ids.push(newId(ids));
+    var anId = newId(ids);
+    ids.push(anId);
 
     ids = storage.save('ids', ids);
 
-    return String(newId);
+    return String(anId);
   }
 
   function newId(ids) {
