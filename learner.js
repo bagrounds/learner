@@ -37,6 +37,10 @@
    */
   function learner(options, callback) {
 
+    if( options.observation && typeCheck('String',options.observation) ){
+      options.observation = JSON.parse(options.observation);
+    }
+
     if (!options.action) {
       listRegisteredIds(callback);
       return;
