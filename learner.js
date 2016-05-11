@@ -133,7 +133,7 @@
 
     var newLearner = new Learner(options);
 
-    storage.save(learnerId, newLearner);
+    storage.save(learnerId, newLearner.observations);
 
     callback(null, learnerId);
   }
@@ -196,12 +196,15 @@
     var learnerId = options.learnerId;
     var observation = options.observation;
 
-    var aLearner = storage.load(learnerId);
+    var observations = storage.load(learnerId);
+
+    var aLearner = new Learner({observations:observations});
+
     console.log('learner: ' + aLearner);
 
-    aLearner.observe(observation, function (error, scores) {
+    aLearner.observe({observation:observation}, function (error, scores) {
 
-      storage.save(learnerId, aLearner);
+      storage.save(learnerId, aLearner.observations);
 
       callback(error, scores);
     });
@@ -219,7 +222,9 @@
     var learnerId = options.learnerId;
     var observation = options.observation;
 
-    var aLearner = storage.load(learnerId);
+    var observations = storage.load(learnerId);
+
+    var aLearner = new Learner({observations:observations});
 
     var learnerOptions = {
       observation: observation
