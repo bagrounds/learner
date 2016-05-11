@@ -196,6 +196,7 @@
     var observation = options.observation;
 
     var aLearner = storage.load(learnerId);
+    console.log('learner: ' + aLearner);
 
     aLearner.observe(observation, function (error, scores) {
 
