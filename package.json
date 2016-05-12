@@ -1,6 +1,6 @@
 {
   "name": "learner",
-  "version": "0.2.10",
+  "version": "0.2.11",
   "main": "learner.js",
   "private": true,
   "scripts": {

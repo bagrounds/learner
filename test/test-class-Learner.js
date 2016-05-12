@@ -173,7 +173,7 @@
 
         var learnerOptions = {observation: unlabeledObservation};
 
-        newLearner.predict(learnerOptions,function(error,prediction){
+        newLearner.predict(learnerOptions,function(error,prediction) {
 
           expect(error).to.not.be.ok;
 
@@ -182,25 +182,7 @@
 
           expect(isNumerical).to.be.true;
 
-          var learnerOptions = {observation: observationA};
-          newLearner.observe(learnerOptions, function(error, prediction){
-
-            var scores = _.values(prediction);
-            var isNumerical = typeCheck(numericalDescription, scores);
-
-            expect(isNumerical).to.be.true;
-
-            var learnerOptions = {observation: observationB};
-            newLearner.observe(learnerOptions, function(error, prediction){
-
-              var scores = _.values(prediction);
-              var isNumerical = typeCheck(numericalDescription, scores);
-
-              expect(isNumerical).to.be.true;
-
-              done();
-            });
-          });
+          done();
         });
       });
 
@@ -215,24 +197,8 @@
           var scores = _.values(prediction);
 
           expect(scores).to.have.length(1);
+          done();
 
-          var learnerOptions = {observation: observationA};
-          newLearner.observe(learnerOptions, function(error, prediction){
-
-            var scores = _.values(prediction);
-
-            expect(scores).to.have.length(2);
-
-            var learnerOptions = {observation: observationB};
-            newLearner.observe(learnerOptions, function(error, prediction){
-
-              var scores = _.values(prediction);
-
-              expect(scores).to.have.length(3);
-
-              done();
-            });
-          });
         });
       });
 
